@@ -32,8 +32,7 @@ function App() {
   }
   const handleGitHubSignIn = () =>{
 
-    console.log('called handleGitHubSignIn');
-    signInWithPopup(auth, gitHubProvider) 
+    signInWithPopup(auth, gitHubProvider)
       .then( result =>{
         const user = result.user
         setUser(user);
