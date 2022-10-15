@@ -31,11 +31,12 @@ function App() {
     })
   }
   const handleGitHubSignIn = () =>{
-    // https://simple-firebase-authetic-b2640.firebaseapp.com/__/auth/handler?apiKey=AIzaSyCSD0QG-5_bu2kqzP6bVh7KfcdJrcO9R8c&appName=%5BDEFAULT%5D&authType=signInViaPopup&redirectUrl=http%3A%2F%2Flocalhost%3A3000%2F&v=9.12.1&eventId=8339814815&providerId=github.com
+
     console.log('called handleGitHubSignIn');
     signInWithPopup(auth, gitHubProvider) 
       .then( result =>{
         const user = result.user
+        setUser(user);
         console.log(user);
 
       })
@@ -50,7 +51,7 @@ function App() {
 
   return (
     <div className="App">
-     { user.email ?
+     { user.uid ?
       <button onClick={handleSignOut}>Sign out</button>
       :
        <>
@@ -60,7 +61,7 @@ function App() {
        
       
      }
-      { user.email &&
+      { user.uid &&
         <div>
        <h3>user name : {user.displayName}</h3> 
         <p>email address : {user.email}</p>
